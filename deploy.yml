@@ -10,20 +10,25 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Clona o repositório
+      # 1. Faz o checkout do repositório
       - name: Checkout do código
         uses: actions/checkout@v3
 
-      # Configura o Node.js
+      # 2. Configura o Node.js
       - name: Configura o Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '18'
 
-      # Instala dependências
+      # 3. Verifica arquivos no repositório
+      - name: Listar arquivos no repositório
+        run: ls -la
+
+      # 4. Instala dependências
       - name: Instala dependências
         run: npm install
+        working-directory: ./
 
-      # Executa o servidor (opcional, dependendo do deploy)
+      # 5. Executa o servidor (opcional)
       - name: Executa o servidor
         run: node server.js
