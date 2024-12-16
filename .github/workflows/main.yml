@@ -1,0 +1,29 @@
+name: Deploy Node.js App
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Clona o código
+      - name: Checkout do código
+        uses: actions/checkout@v3
+
+      # Instala o Node.js
+      - name: Configura o Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      # Instala dependências
+      - name: Instala dependências
+        run: npm install
+
+      # Executa o servidor
+      - name: Executa o servidor
+        run: node server.js
