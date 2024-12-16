@@ -10,11 +10,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Clona o código
+      # Clona o repositório
       - name: Checkout do código
         uses: actions/checkout@v3
 
-      # Instala o Node.js
+      # Configura o Node.js
       - name: Configura o Node.js
         uses: actions/setup-node@v3
         with:
@@ -24,6 +24,6 @@ jobs:
       - name: Instala dependências
         run: npm install
 
-      # Executa o servidor
+      # Executa o servidor (opcional, dependendo do deploy)
       - name: Executa o servidor
         run: node server.js
